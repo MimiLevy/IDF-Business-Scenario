@@ -34,7 +34,7 @@ select 'John', 'Major', '123456789', '2000-10-01', 'London', '2020-01-01', 'air 
 insert ArmedForces(SoldierFirstName,SoldierLastName,SSN,DateOfBirth,PlaceOfResidence,DateOfEnlistment,ServiceUnit,ServiceRank,IQLevel)
 select 'John', 'Major', '12345678901', '2000-10-01', 'London', '2020-01-01', 'air force', 'major general', 150
 insert ArmedForces(SoldierFirstName,SoldierLastName,SSN,DateOfBirth,PlaceOfResidence,DateOfEnlistment,ServiceUnit,ServiceRank,IQLevel)
-select 'John', 'Major', '12345678', '2000-10-01', 'London', '2020-01-01', 'air force', 'major general', 150
+select 'John', 'Major', '123456789', '2000-10-01', 'London', '2020-01-01', 'air force', 'major general', 150
 -- Checking wrong dates
 insert ArmedForces(SoldierFirstName,SoldierLastName,SSN,DateOfBirth,PlaceOfResidence,DateOfEnlistment,ServiceUnit,ServiceRank,IQLevel)
 select 'John', 'Major', '123456789', '2000-10-01', 'London', '2017-09-01', 'air force', 'major general', 150

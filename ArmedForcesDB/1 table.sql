@@ -6,7 +6,7 @@ create table dbo.ArmedForces(
     ArmedForcesId int not null identity primary key,
     SoldierFirstName varchar(30) not null constraint ck_ArmedForces_first_name_cannot_be_blank check(SoldierFirstName > ''),
     SoldierLastName varchar(30) not null constraint ck_ArmedForces_last_name_cannot_be_blank check(SoldierLastName > ''),
-    SSN varchar(10) not null constraint ck_ArmedForces_ssn_must_be_9_or_10_digits_and_must_be_numeric check(SSN like replicate('[0-9]',9) or SSN like replicate('[0-9]',10)),
+    SSN varchar(10) not null constraint ck_ArmedForces_ssn_must_be_8_digits_followed_by_dash_and_1_digit check(SSN like replicate('[0-9]',8) + '-[0-9]'),
     DateOfBirth date not null,
     PlaceOfResidence varchar(50) not null constraint ck_ArmedForces_place_of_residence_cannot_be_blank check(PlaceOfResidence > ''),
     DateOfEnlistment date not null constraint ck_ArmedForces_date_of_enlistment_cannot_be_in_future check(DateOfEnlistment <= getdate()),
@@ -20,6 +20,6 @@ create table dbo.ArmedForces(
             else datediff(year,DateOfBirth,DateOfEnlistment)
         end persisted 
         constraint ck_ArmedForces_soldier_must_be_minimum_17_years_old_at_enlistment check(AgeAtEnlistment >= 17),
-    constraint u_ArmedForces_first_name_last_name_ssn_date_of_birth unique(SoldierFirstName,SoldierLastName,SSN,DateOfBirth)
+    constraint u_ArmedForces_first_name_last_name_ssn unique(SoldierFirstName,SoldierLastName,SSN)
 )
 go
